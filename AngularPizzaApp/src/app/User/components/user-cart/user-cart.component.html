@@ -1,0 +1,140 @@
+<app-user-navbar [cartCount]="CartDataCount"></app-user-navbar>
+<div class="container-fluid hg-100 bg-light p-4">
+  <div *ngIf="IsCartEmpty" class="text-center">
+    <img src="../../../../assets/Images/emptyCart.png" alt="" class="src">
+
+  </div>
+
+    <div class="m-auto  " style="max-width: 750px;" *ngIf="CartEmpty">
+      <form action="" class="class" [formGroup]="CartDetails">
+        <div class="card mb-3 border-secondaryy">
+        <div class="row g-0 h-100">
+          <div class="col-md-4 p-2 mx-">
+           <h2 class="text-center text-org fw-bold">Order Summary </h2>
+          </div>
+          <div class="col-md- p-0 mx-3">
+            <table class="table table-borderless mx-3">
+              <thead>
+                <tr >
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let data of cartData">
+                <tr class="fs-style">
+                  <td>{{data.DocTitle}}</td>
+
+                  <td>{{data.Price}}</td>
+                  <td class="cursor_pointer" (click)="RemoveCartItems(data)"><i class="fas fa fa-solid fa-trash"></i></td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <hr>
+
+                <tr class="fw-bold fs-style">
+
+                  <td>Total Price</td>
+                  <td>{{TotalPrice}}</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        </div>
+
+
+
+       <div class="card mb-3 m-auto border-secondaryy " style="max-width: 750px;">
+           
+          <div class="p-3">         
+            <button type="button" class="btn btn-outline-primary rounded-pill float-right"  (click)="AddAddress()">Add New Address<i class="fa fa-thin fa-plus mx-2"></i></button>
+            <button type="button" class="btn btn-outline-primary rounded-pill float-right mx-3" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="selectAddress()">Change Address</button>        
+          </div>
+          <div class="my-3 mx-4">
+            <div class="" >
+             <span class="fw-bold fs-style">Address</span>&nbsp;-&nbsp;<span>{{selectedAddress}}</span>
+             </div>  
+            </div>
+        
+           <div class="form-groupp col-md-7 my-3 mx-4">
+            <div ><h3 class="fw-bold text-org">Mobile Number</h3></div>
+            <input class="form-control" rows="3" formControlName="MobileNumber" required placeholder="Mobile Number">
+             <div *ngIf="CartDetails.controls['MobileNumber'].touched && CartDetails.controls['MobileNumber'].invalid" class=" text-danger">
+              <span class="small text-danger" *ngIf="CartDetails.controls['MobileNumber'].errors?.['required']">Mobile number is required.</span>
+              <span *ngIf="CartDetails.controls['MobileNumber'].errors?.['pattern']">Mobile number is not valid.</span>
+              </div>
+            </div>
+         
+          <div class="col-md- my-3 mx-4">
+            <button type="button" class="btn btn-primary" [disabled]="!CartDetails.valid" (click)="InsertOrderDetails(cartData)">Confirm</button>
+           </div>
+          
+         
+        </div>
+        </form>
+      </div>
+
+
+</div>
+
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class=" modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="myModal">Manage Addresses</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <div class="container">
+          <div class="row">
+             
+              <div class="col-md-">
+                  <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                      <div class="tab-content" id="myTabContent">
+                          <div class="tab-pane fade  active show" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                              <h4 class="font-weight-bold mt-0 mb-4">Choose Addresses</h4>
+                              <form [formGroup]="addressForm" id="msform" >
+                              <div class="row" >
+                                  <div class="col-md-6" *ngFor="let add of addressDetails;let i = index">
+                                      <div class="bg-white card addresses-item mb-4 border border-primary shadow">
+                                          <div class="gold-members p-4">
+                                              <div class="media">
+                                                  <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
+                                                  <div class="media-body">
+                                                   
+                                                      <!-- <h6 class="mb-1 text-secondary">Home</h6> -->
+                                                      <p class="text-black">  
+                                                         <!-- <input type="radio" formControlName="savedAddress{{i}}"> -->
+                                                         <input type="radio"  value="{{add.Address}} {{add.Landmark}},{{add.City}}" formControlName="savedAddress" />&nbsp;
+           
+                                                         &nbsp; 
+                                                          <span>{{add.Address}}</span>&nbsp; <span>{{add.Landmark}}</span></p>
+                                                      <p class="text-black fw">  <span>{{add.City}}</span>&nbsp; <span>{{add.State}}</span></p>
+                                                      <p class="mb-0 text-black font-weight-bold">
+                                                        <!-- <a class="text-primary mr-3" data-toggle="modal" data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a>  -->
+                                                        <button _ngcontent-idx-c280="" data-toggle="modal" data-target="#add-address-modal"  class="text-primar btn btn-warning btn-sm mr-"><i  class="fas fa-editt"></i> Edit</button>
+                                                        <button _ngcontent-idx-c280="" data-toggle="modal" data-target="#add-address-modal" class="text-primar btn btn-warning btn-sm mx-2"><i class="fas fa-delete"></i> Delete</button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>                                
+                              </div>
+                            </form>
+                           </div>
+                      </div> 
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="SelectedAddress(addressForm)">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

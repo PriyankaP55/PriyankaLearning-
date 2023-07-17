@@ -1,0 +1,38 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="card-wrapper">
+  <div class="card ">
+    <div class="card-body ">
+      <div class="row">
+        <div class="col-sm-3 my-3" *ngFor="let img of allImgs;let i = index">
+          <div class="card border-primary h-100">
+            <div class="card-body ">
+              <div class="m-auto">
+                <h3 class="card-title fw-bold">{{ img.DocTitle }}</h3>
+              </div>
+
+              <div class="row bg-light m-0">
+                <div class="col">
+                  <div class="p-3">
+                    <span><img class="img-fluid rounded" src="http://localhost:3000/uploads/{{ img.DocName }}" alt="{{ img.DocName }}" /></span>
+                  </div>
+                </div>
+                <div class="col p-2 m-auto">
+                  <div class="">
+                    <h3 class="fw-bold">{{ img.Price | currency : "INR" }}</h3>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <img src="../../../../assets/Images/PizzaImgs/margherita.avif"> -->
+              <p class="card-text my-2">{{ img.Description }}</p>
+              <div>
+                <button type="button" class="btn btn-outline-primary rounded-pill float-right" id="{{i}}" (click)="AddItems(img,i)">{{AddBtn}}<i class="fa fa-thin fa-plus mx-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

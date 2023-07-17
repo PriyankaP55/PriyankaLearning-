@@ -1,0 +1,36 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container bg-light hg-100">
+    
+    <div class="p-3">
+        <h2 class="fw-bold text-org ">My Order Details</h2>
+    </div>
+   <!-- <button class="btn btn-clr btn-sm float-right"> <a class="nav nav-link text-white" [routerLink]="['/User/order-tracker']">Track your Order</a></button> -->
+
+    <div class="my-4 col-md- text_center">
+        <table class="table table-success table-striped">
+            <thead class="f-family fw-bold orderTbl-bg">
+                <tr>
+                    <th>Order Id</th>
+                    <th>Order Name</th>
+                    <th> Price</th>
+                    <th> Date</th>
+                    <th>Address</th>
+                    <th>Mobile Number</th>
+                    <th>Track Order</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let data of OrderDetails">
+                <tr>
+                    <td>{{data.OrderId}}</td>
+                    <td>{{data.DocTitle}}</td>
+                    <td>{{data.Price}}</td>
+                    <td>{{data.InsertDate | date:'mm/dd/yyyy'}}</td>
+                    <td>{{data.Address}}</td>
+                    <td>{{data.MobileNumber}}</td>
+                    <td><button class="btn btn-sm w-50 rounded btn-outline-success text-org" (click)="GoToTractOrder(data)">Click</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

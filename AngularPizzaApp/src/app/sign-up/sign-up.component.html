@@ -1,0 +1,78 @@
+<body>
+    <div class="containerr" >
+      <!-- <div class="">
+    <img src="../../assets/Images/pizza.jfif" height="100%" width="100%">
+        </div> -->
+        <div  class="justify-content-center align-item-center mx-auto" align="center">
+       <mat-card class="login-wrapper  ">
+       
+         <h1 class="fw-boldd login-title">****** Create account ******</h1>
+       
+        <mat-card-content>
+          <form [formGroup]="loginForm" class="text-center" (ngSubmit)="onSubmit(loginForm)">
+          <div class="" >
+           
+              <div>
+                <mat-form-field class="w-50">
+                  <mat-label class="fw-bold"> Name</mat-label>
+                  <input matInput type="text" formControlName="UserName">
+                  <mat-error *ngIf="loginForm.controls['UserName'].errors?.['required']"> User name is required.</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class="w-50">
+                  <mat-label class="fw-bold">Email</mat-label>
+                  <input matInput type="text" formControlName="Email" (blur)="checkUserExists()">
+                  <mat-error *ngIf="loginForm.controls['Email'].errors?.['required'] || loginForm.controls['Email'].touched">Email is required.</mat-error>
+                  <mat-error *ngIf="loginForm.controls['Email'].errors?.['email']">Email is invalid.</mat-error>
+                 
+                </mat-form-field>
+                <div *ngIf="err" class="text-org">{{err}}</div>
+              </div>
+              <div>
+                <mat-form-field class="w-50">
+                  <mat-label class="fw-bold">Mobile</mat-label>
+                  <input matInput type="text" formControlName="Mobile" appPhoneMask>
+                 
+                 
+                </mat-form-field>
+                <div *ngIf="loginForm.controls['Mobile'].touched && loginForm.controls['Mobile'].invalid" class=" text-danger">
+                  <mat-error class="small text-danger" *ngIf="loginForm.controls['Mobile'].errors?.['required']">Mobile number is required.</mat-error>
+                  <mat-error *ngIf="loginForm.controls['Mobile'].errors?.['pattern']">Mobile number is not valid.</mat-error>
+                  </div>
+              </div>
+              <!-- <mat-error *ngIf="loginForm.controls['Mobile'].touched && loginForm.controls['Mobile'].invalid" class=" ">
+                <span class="small " *ngIf="loginForm.controls['Mobile'].errors?.['required']">Mobile number is required.</span>
+                <span *ngIf="loginForm.controls['Mobile'].errors?.['pattern']">Mobile number is not valid.</span>
+              </mat-error> -->
+              <div>
+                <mat-form-field class="w-50">
+                  <mat-label class="fw-bold">Password</mat-label>
+                  <input matInput type="password" formControlName="Password">
+                  <mat-error *ngIf="loginForm.controls['Password'].errors?.['required']">Password is required.</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class="w-50">
+                  <mat-label class="fw-bold">Confirm Password</mat-label>
+                  <input matInput type="password" formControlName="ConfirmPassword">
+                  <mat-error *ngIf="loginForm.controls['ConfirmPassword'].errors?.['required']">Confirm password is required.</mat-error>
+                </mat-form-field>
+              </div>
+              <div><mat-error>{{passwordErr}}</mat-error></div>
+            
+          </div>
+          <button mat-raised-button color="accent" class="w-25" type="submit" >Sign Up</button>
+        </form>
+        </mat-card-content>
+      
+        <div>
+            <span>Already have an account?</span>&nbsp;
+            <span><a href="" class="text-white" [routerLink]="['/Login']">Login</a></span>
+          </div>
+
+       </mat-card>
+          
+      </div>
+    </div>
+    </body>

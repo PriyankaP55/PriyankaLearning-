@@ -1,0 +1,47 @@
+<div class="nav-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+         <div class="text-white">
+          <!-- <h2>Pizza App</h2> -->
+        <span><img class="pz-logo" src="../../../../assets/Images/pzlogo"></span>
+        </div>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav p-2 mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/User/user-dashboard']">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/User/my-orders']">My Order</a>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Offers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/User/user-cart']">Cart  <i class="fa fa-regular fa-cart-plus text-white"></i>
+                  <span class="bg-primary badge position-absolute top- translate-middle mx-2  rounded-circle">{{itemNum}}</span>
+                </a>
+              
+              </li>
+
+            </ul>
+
+          </div>
+          <div>
+            <ul class="mb-2">
+              <li class="nav-item float-right">
+                <i class="fa fa-regular fa-user text-white" style="font-size:30px;" (click)="signOut()"></i>
+
+               </li>
+               <span class="text-white"> {{username}}</span>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+</div>
+

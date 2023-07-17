@@ -1,0 +1,69 @@
+<app-user-navbar></app-user-navbar>
+<div class="container p-4">
+    <div class="card col-md-8 mx-auto ">
+        <div class="card-body">
+            <div>
+                <h2 class="fw-bold text-org">Add Address</h2>
+            </div>
+            <form [formGroup]="addressForm" (ngSubmit)="AddAddress(addressForm)">
+                <div>
+                    <div class="row my-2">
+                        <mat-form-field class="w-50" appearance="outline">
+                          <mat-label class="fw-bold">House No., Building Name</mat-label>
+                          <input matInput type="text" formControlName="Address" >             
+                          <mat-error *ngIf="addressForm.controls['Address'].errors?.['required'] && addressForm.controls['Address'].touched">Address is required.</mat-error>
+                    
+                        </mat-form-field>
+                     
+                        <mat-form-field class="w-50" appearance="outline">
+                          <mat-label class="fw-bold">Landmark</mat-label>
+                          <input matInput type="text" formControlName="Landmark" >             
+                          <mat-error *ngIf="addressForm.controls['Landmark'].errors?.['required'] && addressForm.controls['Landmark'].touched">Landmark is required.</mat-error>
+                    
+                        </mat-form-field>
+                      </div>
+                     <div class="row my-2">
+                        <mat-form-field class="w-50" appearance="outline">
+                          <mat-label class="fw-bold">Zip Code</mat-label>
+                          <input matInput type="text" formControlName="ZipCode" (keyup)="getAddressDetails()" >             
+                          <mat-error *ngIf="addressForm.controls['ZipCode'].errors?.['required'] && addressForm.controls['ZipCode'].touched">Zip code is required.</mat-error>
+                    
+                        </mat-form-field>
+                        <mat-form-field class="w-50" appearance="outline">
+                          <mat-label class="fw-bold">City</mat-label>
+                          <input matInput type="text" formControlName="City" >             
+                          <mat-error *ngIf="addressForm.controls['City'].errors?.['required'] && addressForm.controls['City'].touched">City is required.</mat-error>
+                    
+                        </mat-form-field>
+  
+                        <!-- <mat-form-field class="w-50" appearance="outline">
+                          <mat-label class="fw-bold">Area, Colony</mat-label>
+                          <input matInput type="text" formControlName="Address2" >             
+                          <mat-error *ngIf="addressForm.controls['Address2'].errors?.['required'] && addressForm.controls['Address2'].touched">Address is required.</mat-error>
+                    
+                        </mat-form-field> -->
+                      </div>
+                      <div class="row my-2">
+                      
+
+                      <mat-form-field class="w-50" appearance="outline">
+                        <mat-label class="fw-bold">State</mat-label>
+                        <input matInput type="text" formControlName="State" >             
+                        <mat-error *ngIf="addressForm.controls['State'].errors?.['required'] && addressForm.controls['State'].touched">State is required.</mat-error>
+                  
+                      </mat-form-field>
+                      <mat-form-field class="w-50" appearance="outline">
+                        <mat-label class="fw-bold">Country</mat-label>
+                        <input matInput type="text" formControlName="Country" >             
+                        <mat-error *ngIf="addressForm.controls['Country'].errors?.['required'] && addressForm.controls['Country'].touched">Country is required.</mat-error>
+                  
+                      </mat-form-field>
+                    </div>
+
+                    
+                      <button mat-raised-button color="accent">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

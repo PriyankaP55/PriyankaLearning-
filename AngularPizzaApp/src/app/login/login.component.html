@@ -1,0 +1,45 @@
+<body>
+<div class="containerr" >
+  <!-- <div class="">
+<img src="../../assets/Images/pizza.jfif" height="100%" width="100%">
+    </div> -->
+    <div  class="justify-content-center align-item-center mx-auto" align="center">
+   <mat-card class="login-wrapper  ">
+   
+     <h1 class="fw-boldd login-title">****** Login ******</h1>
+     <form [formGroup]="loginForm" class="text-center" (ngSubmit)="onSubmit(loginForm)">
+    <mat-card-content>
+      <div class="" >
+        
+          <div>
+            <mat-form-field class="w-50">
+              <mat-label class="fw-bold">Email</mat-label>
+              <input matInput type="text" formControlName="Email" >             
+              <mat-error *ngIf="loginForm.controls['Email'].errors?.['required'] && loginForm.controls['Email'].touched">Email is required.</mat-error>
+              <mat-error *ngIf="loginForm.controls['Email'].errors?.['email']">Email is invalid.</mat-error>            
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-50">
+              <mat-label class="fw-bold">Password</mat-label>
+              <input matInput type="password" formControlName="Password">
+              <mat-error *ngIf="loginForm.controls['Password'].errors?.['required']">Password is required.</mat-error>
+            </mat-form-field>
+          </div>
+       
+      </div>
+      <mat-error>{{error}}</mat-error>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  type="submit" mat-raised-button  color="accent" class="w-25" >Login</button>
+    </mat-card-actions>
+  </form>
+    <div>
+      <span>Create New User?</span>&nbsp;
+      <span><a href="" class="text-white" [routerLink]="['/Sign-up']">Sign In</a></span>
+    </div>
+   </mat-card>
+     
+  </div>
+</div>
+</body>

@@ -1,0 +1,32 @@
+<app-user-navbar></app-user-navbar>
+<section>
+    <div class="container bg-light hg-100">
+        <div>
+            <div class="p-5">
+                <h1 class="fw-bold text-org text-center">Track delivery status</h1>
+                <div class="float-right fs-6">
+                    <span class="fw-bold ">Order Id : </span><span class="text-org p-2 text-decoration-underline">{{orderId}}</span>
+                </div>
+              
+            </div>
+           
+            <div class="status-box">
+                <ul class="list-unstyled">
+                    <div id="placed">
+                        <li class="p-2" ><i class="fa fa-light fa-clipboard-check" ></i><span>Order Placed</span></li>
+                        <div class="vr sts-line" ></div>
+                    </div>
+                    
+                    <li class="p-2" id="placed"><i class=" fa fa-regular fa-check-double"></i><span>Order Confirmation</span></li>
+                    <div class="vr sts-line"></div>
+                    <li class="p-2" id="placed"><i class=" fa fa-regular fa-pizza-slice"></i><span>Preparation</span></li>
+                    <div class="vr sts-line"></div>
+                    <li class="p-2" id="placed"><i class="fa fa-light fa-truck"></i><span>Out for delievery</span></li>
+                    <div class="vr sts-line"></div>
+                    <li class="p-" id="placed"><i class="fa fa-duotone fa-check"></i><span>Order Complete</span></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

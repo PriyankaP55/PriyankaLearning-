@@ -1,0 +1,50 @@
+.status-box ul li span::after{
+    content: "";
+    position: absolute;
+    left: -13px;
+    top: 23%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    transform: translate(-50%);
+    box-shadow: 0 0 1px 4px;
+    color: orangered;
+}
+.status-box ul li span{
+    position: relative;
+}
+.status-box ul li i:before{
+    font-size: 40px;
+    font-weight: 600;
+    position: relative;
+    left: -60px;
+    transform: translate(-50%);
+     top:10px;
+     color: inherit;
+}
+.status-box ul{
+    margin-left: 25%;
+}
+.sts-line{
+    height: 4em;
+    margin-left: 3em;
+    opacity: 1;
+}
+// .status-box ul li.step-complete span :before{
+
+// background: gray;
+// }
+
+.status-box ul div.step-complete {
+    color: gray;
+
+}
+.status-box ul li.current-step span{
+    color: orangered;
+
+}
+.status-box ul li.current-step span ::after {
+
+    color: orangered;
+
+}

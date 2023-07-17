@@ -1,0 +1,45 @@
+
+
+<!-- <app-admin-nav-bar ></app-admin-nav-bar> -->
+ 
+<div class="container  p-4">
+    <div class="card ">
+        <div class="card-body">
+            <div>
+                <span class="fs-4 text-org fw-bold">All Order Details</span>
+            </div>
+            <div class="my-4 col-md- text_center">
+                <form [formGroup]="AdminForm">
+                <table class="table table-success table-striped">
+                    <thead class="f-family fw-bold orderTbl-bg">
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Order Name</th>
+                            <th> Price</th>
+                            <th> Date</th>
+                            <th>Address</th>
+                            <th>Mobile Number</th>
+                            <th>Update Status</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let data of OrderDetails;let i = index">
+                            <td>{{data.OrderId}}</td>
+                            <td>{{data.DocTitle}}</td>
+                            <td>{{data.Price}}</td>
+                            <td>{{data.InsertDate | date:'mm/dd/yyyy'}}</td>
+                            <td>{{data.Address}}</td>
+                            <td>{{data.MobileNumber}}</td>
+                            <!-- <td><button class="btn btn-sm w-50 rounded btn-outline-success text-org" (click)="ViewOrder(data)">Click</button></td> -->
+                            <td><select class="form-controls form-selects form-select-sm" value="{{data.OrderStatus}}"  formControlName="orderStatusList" (change)="UpdateOrderStatus(data.UserId,data.DocId)">
+                                <option class="small fs-6" selected disabled>Select status</option>
+                                <option *ngFor="let opt of StatusList" value="{{opt.StatusName}}" id="{{data.DocId}}" >{{opt.StatusName}}</option>
+                            </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
